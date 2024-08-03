@@ -1,11 +1,16 @@
 package com.devsuperior.uri2609;
 
+import com.devsuperior.uri2609.dto.CategorySumDTO;
+import com.devsuperior.uri2609.projections.CategorySumProjection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.devsuperior.uri2609.repositories.CategoryRepository;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class Uri2609Application implements CommandLineRunner {
@@ -19,6 +24,22 @@ public class Uri2609Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		/*
+		List<CategorySumProjection> list = repository.search1();
+		List<CategorySumDTO> objetos = list.stream().map(x -> new CategorySumDTO(x)).collect(Collectors.toList());
+
+		for(CategorySumDTO obj : objetos){
+			System.out.println(obj);
+		}
+
+		 */
+
+		List<CategorySumDTO> objetos = repository.search2();
+
+		for(CategorySumDTO obj : objetos){
+			System.out.println(obj);
+		}
 
 	}
 }
